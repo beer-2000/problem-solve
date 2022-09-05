@@ -1,3 +1,5 @@
+# 시간복잡도 O(2^n)
+
 import time
 
 def fibo(n):
