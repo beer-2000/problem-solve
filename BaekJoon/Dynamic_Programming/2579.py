@@ -1,10 +1,10 @@
 n = int(input())
 
-array = [0] * 301
+array = [0] * (n + 3)
 for i in range(n):
     array[i + 1] = int(input())
 
-dp = [0] * 301
+dp = [0] * (n + 3)
 dp[1] = array[1]
 dp[2] = array[1] + array[2]
 dp[3] = max(dp[1] + array[3], dp[2] + array[3])
