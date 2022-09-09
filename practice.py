@@ -1,33 +1,37 @@
-# import sys
-array = [list(map(int, input().split())) for _ in range(10)]
-# array = [list(map(int, sys.stdin.readline().split())) for _ in range(10)]
+def compare(s1, s2):
+    if len(s1) < len(s2):
+        return 0
+    elif len(s1) > len(s2):
+        return 1
+    elif s1 < s2:
+        return 0
+    else:
+        return 1
 
+def quick_sort(array):
+    if len(array) <= 1:
+        return array
+    pivot = array[0]
+    tail = array[1:]
 
-x = 2
-y = 2
+    left_side = [x for x in tail if compare(x, pivot) == 0]
+    right_side = [x for x in tail if compare(x, pivot) == 1]
+    return quick_sort(left_side) + [pivot] + quick_sort(right_side)
 
-while True:
-    if array[x - 1][y - 1] == 2:
-        array[x - 1][y - 1] = 9
-        break
+n = int(input())
 
-    if array[x - 1][y - 1] == 0:
-        array[x - 1][y - 1] = 9
+array = []
+for i in range(n):
+    array.append(input())
 
-    if array[x - 1][y] != 1:
-        y += 1
-        continue
-    
-    if array[x][y - 1] != 1:
-        x += 1
-        continue
+array = list(set(array))
 
-    break
-    
-    
-        
-# print('---------')
-for i in range(10):
-    for j in range(10):
-        print(array[i][j], end=' ')
-    print()
+# for i in range(n):
+#     for j in range(i + 1, n):
+#         if compare(array[i], array[j]) == 1:
+#             array[i], array[j] = array[j], array[i]
+
+array_sorted = quick_sort(array)
+
+for i in array_sorted:
+    print(i)
