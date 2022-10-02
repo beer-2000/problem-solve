@@ -5,6 +5,8 @@ a = set(map(int, sys.stdin.readline().split()))
 m = int(input())
 b = map(int, sys.stdin.readline().split())
 
+
+### 이분 탐색을 활용한 풀이
 # def binary(l, N, start, end):
 #     if start > end:
 #         return 0
